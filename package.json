@@ -1,6 +1,6 @@
 {
   "name": "@grumptech/lezer-mustache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "lezer-based mustache grammar",
   "main": "dist/index.cjs",
   "type": "module",
