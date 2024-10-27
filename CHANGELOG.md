@@ -1,5 +1,7 @@
-## 0.1.0 (2024-04-26)
+# Changelog
+
+## 0.1.0 (2024-10-27)
 
 ### New features
 
-First Version
+First release.

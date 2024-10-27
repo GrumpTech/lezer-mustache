@@ -1,31 +1,33 @@
 # lezer-mustache
 
-This repository contains a [mustache](https://mustache.github.io/mustache.5.html) grammar for the [lezer](https://lezer.codemirror.net/) parser system. [CodeMirror](https://codemirror.net/) editors use lezer parsers for syntax highlighting.
+This is a [mustache](https://mustache.github.io/mustache.5.html) parser for the [lezer](https://lezer.codemirror.net/) parser system. [CodeMirror](https://codemirror.net/) editors use lezer parsers for syntax highlighting.
 
-The code is based on [lezer xml parser](https://github.com/lezer-parser/xml) by Marijn Haverbeke licensed under an MIT license.
+The code is based on [lezer xml parser](https://github.com/lezer-parser/xml) by Marijn Haverbeke licensed under a MIT license.
 
 ## Supported tags
-
-This mustache parser supports the following tags.
 
 - Variables
 - Sections
 - Inverted sections
 - Partials
-- Custom delimeters
+- Custom delimiters
 - Comments
 
 ## Getting started
 
+### Demo
+
+[Demo](https://grumptech.github.io/templates/demo/new) of syntax highlighting with lezer-mustache in CodeMirror.
+
 ### Npm commands
 
 - Run `npm install` to install the necessary npm packages.
-- Run `npm build` to build the mustache parser.
-- Run `npm test` to run some test scenarios.
+- Run `npm run build` to build the mustache parser.
+- Run `npm run test` to run some tests.
 
 ### Example implementation in CodeMirror
 
-The following code integrates lezer-mustache with the CodeMirror HTML language. It highlights the syntax of both mustache and HTML. Add `mustacheLanguage()` as an extension to CodeMirror to implement this combined language.
+The following code integrates lezer-mustache with the CodeMirror HTML language. Add `mustacheLanguage()` as an extension to CodeMirror to implement mixed-language parsing and highlight the syntax of both mustache and HTML.
 
 ```ts
 import { html, htmlLanguage } from "@codemirror/lang-html";
