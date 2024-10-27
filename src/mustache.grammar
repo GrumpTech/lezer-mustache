@@ -1,0 +1,67 @@
+@top Document { entity* }
+
+entity {
+  Content |
+  Tag |
+  PartialTag |
+  CommentTag |
+  UnescapedTag |
+  DelimiterTag |
+  InvalidDelimiterTag |
+  MismatchedCloseSectionTag |
+  Element
+}
+
+Element {
+  SectionTag entity* CloseSectionTag
+}
+
+tag<type> { type space* (TagKey | InvalidTagKey) space* EndTag }
+
+Tag { tag<StartTag> }
+SectionTag[closedBy="CloseSectionTag"] { tag<StartSectionTag> }
+CloseSectionTag[openedBy="SectionTag"] { tag<StartCloseSectionTag> }
+PartialTag { tag<StartPartialTag> }
+MismatchedCloseSectionTag { tag<MismatchedStartCloseSectionTag> }
+
+UnescapedTag { tag<StartAmpersandTag> | (StartUnescapedTag space* (TagKey | InvalidTagKey) space* EndUnescapedTag) }
+CommentTag { StartCommentTag Comment? EndTag }
+
+@context mustacheContext from "./tokens.js"
+
+@external tokens content from "./tokens.js" {
+  Content
+}
+@external tokens startTag from "./tokens.js" {
+  StartTag[closedBy="EndTag"]
+  StartAmpersandTag[closedBy="EndTag"]
+  StartPartialTag[closedBy="EndTag"]
+  StartSectionTag[closedBy="EndTag"]
+  StartCloseSectionTag[closedBy="EndTag"]
+  MismatchedStartCloseSectionTag[closedBy="EndTag"]
+  StartCommentTag[closedBy="EndTag"]
+  StartUnescapedTag[closedBy="EndUnescapedTag"]
+  DelimiterTag
+  InvalidDelimiterTag
+}
+@external tokens tagKey from "./tokens.js" {
+  TagKey
+  InvalidTagKey
+}
+@external tokens comment from "./tokens.js" {
+  Comment
+}
+@external tokens endTag from "./tokens.js" {
+  EndTag[openedBy="StartTag StartSectionTag StartCloseSectionTag MismatchedStartCloseSectionTag StartCommentTag"]
+}
+@external tokens endUnescapedTag from "./tokens.js" {
+  EndUnescapedTag[openedBy="StartUnescapedTag"]
+}
+
+@tokens {
+  space { " " }
+}
+
+@external propSource mustacheHighlighting from "./highlight"
+
+@detectDelim

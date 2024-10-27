@@ -1,0 +1,37 @@
+{
+  "name": "@grumptech/lezer-mustache",
+  "version": "1.0.0",
+  "description": "lezer-based mustache grammar",
+  "main": "dist/index.cjs",
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "GrumpTech",
+  "license": "MIT",
+  "devDependencies": {
+    "@lezer/generator": "^1.7.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "mocha": "^10.7.3",
+    "prettier": "^3.3.3",
+    "rollup": "^4.22.5"
+  },
+  "dependencies": {
+    "@lezer/common": "^1.2.1",
+    "@lezer/highlight": "^1.2.1",
+    "@lezer/lr": "^1.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grumptech/lezer-mustache"
+  },
+  "scripts": {
+    "build": "lezer-generator src/mustache.grammar -o src/parser && rollup -c",
+    "build-debug": "lezer-generator src/mustache.grammar --names -o src/parser && rollup -c",
+    "prepare": "npm run build",
+    "test": "mocha test/test-*.js"
+  }
+}

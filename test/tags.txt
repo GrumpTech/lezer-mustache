@@ -1,0 +1,136 @@
+# Variable tag
+
+{{name}}
+
+==>
+
+Document(Tag(StartTag,TagKey,EndTag))
+
+# Variable tag dot
+
+{{.}}
+
+==>
+
+Document(Tag(StartTag,TagKey,EndTag))
+
+# Invalid variable tag
+
+{{.a}}
+
+==>
+
+Document(Tag(StartTag,InvalidTagKey,EndTag))
+
+# Invalid variable tag double dot
+
+{{a..}}
+
+==>
+
+Document(Tag(StartTag,InvalidTagKey,EndTag))
+
+# Variable tag with spaces
+
+{{  a }}
+
+==>
+
+Document(Tag(StartTag,TagKey,EndTag))
+
+# Unescaped variable tag
+
+{{{a.b}}}
+
+==>
+
+Document(UnescapedTag(StartUnescapedTag,TagKey,EndUnescapedTag))
+
+# Unescaped variable tag ampersand
+
+{{&a.b}}
+
+==>
+
+Document(UnescapedTag(StartAmpersandTag,TagKey,EndTag))
+
+# Section tag
+
+{{#section}}{{/section}}
+
+==>
+
+Document(Element(SectionTag(StartSectionTag,TagKey,EndTag),CloseSectionTag(StartCloseSectionTag,TagKey,EndTag)))
+
+# Inverted section tag
+
+{{^section}}{{/section}}
+
+==>
+
+Document(Element(SectionTag(StartSectionTag,TagKey,EndTag),CloseSectionTag(StartCloseSectionTag,TagKey,EndTag)))
+
+# Close section tag
+
+{{/section}}
+
+==>
+
+Document(MismatchedCloseSectionTag(MismatchedStartCloseSectionTag,TagKey,EndTag))
+
+# Multiple sections
+
+{{#section}}{{#subsection}}{{/subsection}}{{/section}}{{#section2}}{{/section2}}
+
+==>
+
+Document(Element(SectionTag(StartSectionTag,TagKey,EndTag),Element(SectionTag(StartSectionTag,TagKey,EndTag),CloseSectionTag(StartCloseSectionTag,TagKey,EndTag)),CloseSectionTag(StartCloseSectionTag,TagKey,EndTag)),Element(SectionTag(StartSectionTag,TagKey,EndTag),CloseSectionTag(StartCloseSectionTag,TagKey,EndTag)))
+
+# Partial tag
+
+{{>partial}}
+
+==>
+
+Document(PartialTag(StartPartialTag,TagKey,EndTag))
+
+# Delimiter tag
+
+{{=[[ ]]=}}
+
+==>
+
+Document(DelimiterTag)
+
+# Comment tag
+
+{{! test }}
+
+==>
+
+Document(CommentTag(StartCommentTag,Comment,EndTag))
+
+# Delimiter tag and variable tag
+
+{{=[[ ]]=}}[[a]]
+
+==>
+
+Document(DelimiterTag,Tag(StartTag,TagKey,EndTag))
+
+# Invalid delimiter tag
+
+{{=[[ ]]=
+
+==>
+
+Document(InvalidDelimiterTag)
+
+
+# Invalid delimiter tag and content
+
+{{= bb=}}
+
+==>
+
+Document(InvalidDelimiterTag, Content)
