@@ -19,12 +19,11 @@ The code is based on [lezer xml parser](https://github.com/lezer-parser/xml) by 
 
 [Demo](https://grumptech.github.io/templates/demo/new) of syntax highlighting with lezer-mustache in CodeMirror.
 
-### Npm commands
 
-- Run `npm install` to install the necessary npm packages.
-- Run `npm run build` to build the mustache parser.
-- Run `npm run test` to run some tests.
-- Run `npx prettier . --check` or `npx prettier . --write` to format code using prettier (an opinionated formatter).
+### Install
+
+Run `npm i @grumptech/lezer-mustache`.
+
 
 ### Example implementation in CodeMirror
 
@@ -67,3 +66,10 @@ const language = LRLanguage.define({
   parser: mustacheParser,
 });
 ```
+
+### Developing
+
+- Run `npm install` to install the necessary npm packages.
+- Run `npm run build` to build the mustache parser.
+- Run `npm run test` to run some tests.
+- Run `npx prettier . --check` or `npx prettier . --write` to format code using prettier (an opinionated formatter).

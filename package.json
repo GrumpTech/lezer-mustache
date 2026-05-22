@@ -1,6 +1,6 @@
 {
   "name": "@grumptech/lezer-mustache",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "lezer-based mustache grammar",
   "main": "dist/index.cjs",
   "type": "module",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grumptech/lezer-mustache.git"
+    "url": "git+https://github.com/GrumpTech/lezer-mustache.git"
   },
   "scripts": {
     "build": "lezer-generator src/mustache.grammar -o src/parser && rollup -c",
@@ -43,7 +43,7 @@
     "codemirror"
   ],
   "bugs": {
-    "url": "https://github.com/grumptech/lezer-mustache/issues"
+    "url": "https://github.com/GrumpTech/lezer-mustache/issues"
   },
-  "homepage": "https://github.com/grumptech/lezer-mustache#readme"
+  "homepage": "https://github.com/GrumpTech/lezer-mustache#readme"
 }
