@@ -15,15 +15,13 @@ The code is based on [lezer xml parser](https://github.com/lezer-parser/xml) by 
 
 ## Getting started
 
-### Demo
-
-[Demo](https://grumptech.github.io/templates/demo/new) of syntax highlighting with lezer-mustache in CodeMirror.
-
-
 ### Install
 
 Run `npm i @grumptech/lezer-mustache`.
 
+### Demo
+
+[Demo](https://grumptech.github.io/demos/template-editor) of syntax highlighting with lezer-mustache in CodeMirror.
 
 ### Example implementation in CodeMirror
 
